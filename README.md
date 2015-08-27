@@ -1,2 +1,2 @@
-Connect Four
+Connect Four<br>
 Ben, Zakai, Jason, Cameron
