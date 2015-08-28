@@ -34,3 +34,7 @@ $(document).ready(function() {
   }
 
 }.bind(this));
+
+this.winMessage = function(){
+  $("img.win")
+}
