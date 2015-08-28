@@ -3,7 +3,7 @@ var Controller = function() {
 }
 
 Controller.prototype.columnClicked = function(columnIdx) {
-  if (!this.gameLogic.columnFull(columnIdx) ) {
+  if (!this.gameLogic.columnFull(columnIdx) && !this.gameLogic.gameWon()) {
     var rowIdx = this.gameLogic.insertToken(columnIdx);
       var viewData = {
         playerDidMove: this.gameLogic.currentPlayer(),
@@ -13,6 +13,13 @@ Controller.prototype.columnClicked = function(columnIdx) {
       }
       updateBoard(viewData);
     if (this.gameLogic.gameWon()) {
+      if(this.gameLogic.currentPlayer() === 1){
+        alert("SUB-ZERO WINS");
+      }
+      else{
+        alert("SCORPION WINS");
+      }
+      winMessage();
 
       console.log("You win!");
       // call view win message
