@@ -7,7 +7,9 @@ var Controller = function() {
 Controller.prototype.columnClick(columnIdx) {
   if (!this.gameLogic.columnFull(columnIdx) ) {
     var rowIndex = this.gameLogic.insertToken(columnIdx);
-    if (this.gameLogic.gameWon())
+    if (this.gameLogic.gameWon()) {
+
+    }
   }
 
 }
