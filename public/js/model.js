@@ -10,25 +10,25 @@ var GameLogic = function() {
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0]];
   this.turnCount = 0; //tracks turns
-  this.maxTurns = board.length * board[0].length
-}
+  this.maxTurns = this.board.length * this.board[0].length}
 
 GameLogic.prototype.gameWon = function() {
-  horizontalCheck(this.board);
-  topDownDiagonalCheck(this.board);
-  verticalCheck(this.board);
-  bottomUpDiagonalCheck(this.board);
+   if (horizontalCheck(this.board) ||
+    topDownDiagonalCheck(this.board) ||
+    verticalCheck(this.board) ||
+    bottomUpDiagonalCheck(this.board)){return true}
+    else{return false}
 }
 
 GameLogic.prototype.boardFull = function() {
-  if (turnCount >= maxTurns) {
-    return false
+  if (this.turnCount >= this.maxTurns) {
+    return true
   }
-  else { return true }
+  else { return false }
 }
 
 GameLogic.prototype.columnFull = function(columnIdx) {
-  if (board[0][columnIdx] !== 0) { return true }
+  if (this.board[0][columnIdx] !== 0) { return true }
   else {return false}
 }
 
@@ -52,18 +52,6 @@ GameLogic.prototype.insertToken = function(columnIdx) {
 GameLogic.prototype.nextTurn = function() {
   this.turnCount++;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 var horizontalCheck = function (board) {
   for (var i = 0; i < board.length; i++) {
@@ -120,7 +108,7 @@ var bottomUpDiagonalCheck = function(board){
         var secondRowCell = board[i-1][j+1]
         var thirdRowCell = board[i-2][j+2]
         var fourthRowCell = board[i-3][j+3]
-        console.log(i + j)
+        // console.log(i + j)
         if ((testCell === secondRowCell) && (testCell === thirdRowCell) && (testCell === fourthRowCell)) {
           if (row[j] !== 0){
             return true;

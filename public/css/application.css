@@ -1,16 +1,20 @@
 body {
+  font-family: 'Metal Mania', cursive;
+  color: red;
+  background-color: black;
   text-align: center;
 }
 
 table {
   margin: auto;
+  display: inline-block;
   border: 2px solid black;
 }
 
 td {
   height: 70px;
   width: 70px;
-  border: 4px solid #FDD017;
+  border: 4px solid white;
 }
 
 .disc{
@@ -24,9 +28,37 @@ td {
 }
 
 .disc.red{
-  background:#d96666;
+  background: #FFCC00;
 }
 
 .disc.black{
-  background: black;
+  background: #00B2B2;
 }
+
+img {
+  display: inline-block;
+  margin-bottom: 55px;
+}
+
+#flames {
+  width: 100%;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  z-index: 0;
+}
+
+#win {
+  bottom: 30px;
+  display: none;
+}
+
+
+
+
