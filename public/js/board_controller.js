@@ -1,3 +1,4 @@
+//translate board with colors to 2D array
 // 'use strict';
 
 var horizontalCheck = function (board) {
@@ -54,48 +55,80 @@ var verticalCheck = function(board){
   horizontalCheck(transposedBoard);
 };
 
+// var bottomUpDiagonalCheck = function(board){
+//   var transposedBoard = math.transpose(board);
+//   console.log(transposedBoard)
+//   topDownDiagonalCheck(transposedBoard);
+// };
+
 var bottomUpDiagonalCheck = function(board){
-  var transposedBoard = math.transpose(board);
-  console.log(transposedBoard)
-  topDownDiagonalCheck(transposedBoard);
+  for (var i = 0; i < board.length; i++) {
+    var row = board[i];
+    for (var j = 0; j < row.length; j++) {
+// ensure that current slot is at least 3 columns from end of board and three rows above bottom of board.
+      if (row[j] !== 0 && (j < row.length - 3) && (i > 3)) { //height must be > 3
+        console.log("checking")
+        var testCell = row[j]
+        var secondRowCell = board[i-1][j+1]
+        var thirdRowCell = board[i-2][j+2]
+        var fourthRowCell = board[i-3][j+3]
+        if ((testCell === secondRowCell) && (testCell === thirdRowCell) && (testCell === fourthRowCell)) {
+            if (row[j] === 1) {
+              console.log('Player 1 wins!');
+              return
+            }
+            else {
+              console.log('Player 2 wins!');
+              return
+            }
+          }
+      }
+    }
+  }
+  console.log('A winning condition not found.');
 };
 
 // DRIVER CODE
 
-var test1 = [[0, 0, 0, 0, 0, 0, 0],
+var test1 =    [[0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [2, 0, 0, 0, 0, 0, 0],
                 [2, 1, 1, 1, 1, 2, 0]];
 
-var test2 = [[0, 0, 0, 0, 0, 0, 0],
+var test2 =    [[0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 2, 1, 1, 1, 0, 0],
                 [0, 2, 2, 2, 2, 0, 0],
                 [0, 1, 2, 1, 1, 0, 0]];
 
-var test3 = [[0, 0, 0, 0, 0, 0, 0],
+var test3 =    [[0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 1, 0, 0, 0, 0, 0],
                 [0, 2, 1, 0, 0, 0, 0],
                 [2, 2, 1, 1, 0, 0, 0],
                 [2, 1, 2, 2, 1, 0, 0]];
 
-var test4 = [[0, 0, 0, 0, 0, 0, 0],
+var test4 =    [[0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 2, 0, 0],
                 [0, 1, 0, 0, 2, 0, 0],
                 [0, 2, 0, 0, 2, 0, 0],
                 [2, 2, 1, 0, 2, 0, 0],
                 [2, 1, 2, 2, 1, 0, 0]];
 
-var test5 = [[0, 0, 0, 0, 0, 0, 0],
+var test5 =  [[0, 0, 0, 0, 0, 0, 0],
               [0, 0, 0, 0, 0, 0, 0],
               [0, 0, 0, 0, 1, 0, 0],
               [0, 2, 1, 1, 0, 0, 0],
               [2, 2, 1, 0, 0, 0, 0],
               [2, 1, 2, 2, 1, 0, 0]];
+
+// [5][1]
+// [4][2]
+// [3][3]
+// [2][4]
 
 horizontalCheck(test1);
 console.log('test1 is over');
