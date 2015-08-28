@@ -35,19 +35,23 @@ GameLogic.prototype.columnFull = function(columnIdx) {
 GameLogic.prototype.currentPlayer = function() {
   return this.players[this.turnCount % 2];
 }
+GameLogic.prototype.nextPlayer = function() {
+  return this.players[(this.turnCount + 1) % 2];
+}
 
 GameLogic.prototype.insertToken = function(columnIdx) {
-  for (var rowIdx = this.board.length; rowIdx > 0; rowIdx--) {
+  for (var rowIdx = this.board.length-1; rowIdx >= 0; rowIdx--) {
     if (this.board[rowIdx][columnIdx] === 0) {
        this.board[rowIdx][columnIdx] = this.currentPlayer().number;
-       this.turnCount++;
        return rowIdx; //row index
     }
   }
   return "This column is full";
 }
 
-
+GameLogic.prototype.nextTurn = function() {
+  this.turnCount++;
+}
 
 
 
