@@ -14,18 +14,16 @@ td {
 }
 
 .disc{
-  /*position: absolute;*/
   z-index: -1;
   top: -55px;
   left: 14px;
-  width: 46px;
-  height: 46px;
-  border-radius: 46px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   transition: .3s;
-  background: #d96666;
 }
 
-#disc.red{
+.disc.red{
   background:#d96666;
 }
 

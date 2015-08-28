@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 (function createBoard() {
-  console.log("hi");
   var board = $("table#board");
   for (var ri=0; ri<6; ri++) {
     var tr = $('<tr id="' + ri + '">');
@@ -20,7 +19,7 @@ $('table#board').on("click", "td", function(e) {
   console.log(counter)
   var target = $(e.target);
   if (counter % 2 === 0) {
-    $(target).addClass("disc")
+    $(target).addClass("disc red")
   }
   else {
     $(target).addClass("disc black")
