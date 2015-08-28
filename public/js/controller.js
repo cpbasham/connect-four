@@ -1,10 +1,8 @@
-
-
 var Controller = function() {
   this.gameLogic = new GameLogic;
 }
 
-Controller.prototype.columnClicked(columnIdx) {
+Controller.prototype.columnClicked = function(columnIdx) {
   if (!this.gameLogic.columnFull(columnIdx) ) {
     var rowIdx = this.gameLogic.insertToken(columnIdx);
     if (this.gameLogic.gameWon()) {
@@ -24,7 +22,10 @@ Controller.prototype.columnClicked(columnIdx) {
       }
       this.gameLogic.nextTurn;
       // call view update board
+      updateBoard(viewData);
     }
   }
 
 }
+
+controller = new Controller;

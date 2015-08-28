@@ -10,7 +10,7 @@ var GameLogic = function() {
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0]];
   this.turnCount = 0; //tracks turns
-  this.maxTurns = board.length * board[0].length
+  this.maxTurns = this.board.length * this.board[0].length
 }
 
 GameLogic.prototype.gameWon = function() {
@@ -28,7 +28,7 @@ GameLogic.prototype.boardFull = function() {
 }
 
 GameLogic.prototype.columnFull = function(columnIdx) {
-  if (board[0][columnIdx] !== 0) { return true }
+  if (this.board[0][columnIdx] !== 0) { return true }
   else {return false}
 }
 
@@ -52,18 +52,6 @@ GameLogic.prototype.insertToken = function(columnIdx) {
 GameLogic.prototype.nextTurn = function() {
   this.turnCount++;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 var horizontalCheck = function (board) {
   for (var i = 0; i < board.length; i++) {
