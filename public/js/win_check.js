@@ -1,6 +1,13 @@
 //translate board with colors to 2D array
 // 'use strict';
 
+var gameWon = function(board) {
+  horizontalCheck(board);
+  topDownDiagonalCheck(board);
+  verticalCheck(board);
+  bottomUpDiagonalCheck(board);
+}
+
 var horizontalCheck = function (board) {
   for (var i = 0; i < board.length; i++) {
     var row = board[i];
