@@ -29,6 +29,7 @@ $(document).ready(function() {
   });
   //  run winchecker after setting each piece
   this.updateBoard = function(object) {
+    console.log(object)
     $('td[data-row=' + object.rowIdx + '][data-col=' + object.columnIdx + ']').addClass("disc " + object.playerDidMove.color)
   }
 

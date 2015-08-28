@@ -5,24 +5,24 @@ var Controller = function() {
 Controller.prototype.columnClicked = function(columnIdx) {
   if (!this.gameLogic.columnFull(columnIdx) ) {
     var rowIdx = this.gameLogic.insertToken(columnIdx);
+      var viewData = {
+        playerDidMove: this.gameLogic.currentPlayer(),
+        playerWillMove: this.gameLogic.nextPlayer(),
+        rowIdx: rowIdx,
+        columnIdx: columnIdx
+      }
+      updateBoard(viewData);
     if (this.gameLogic.gameWon()) {
+
       console.log("You win!");
       // call view win message
     }
-    else if(this.gameLogic.boardFull) {
+    else if(this.gameLogic.boardFull()) {
       console.log("game over");
       // call view game draw message
     }
     else {
-      var viewData = {
-        playerDidMove: this.gameLogic.currentPlayer,
-        playerWillMove: this.gameLogic.nextPlayer,
-        rowIdx: rowIdx,
-        columnIdx: columnIdx
-      }
-      this.gameLogic.nextTurn;
-      // call view update board
-      updateBoard(viewData);
+      this.gameLogic.nextTurn();
     }
   }
 
